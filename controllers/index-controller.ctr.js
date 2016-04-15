@@ -8,6 +8,14 @@
 			$scope.sortType = 'id';
 		  $scope.sortReverse = false;
 
+		  // load all items from databse
+			$scope.data = itemsFactory.ref;
+
+			$scope.data.$loaded().then(() => {
+				// load sum to scope
+				$scope.total = total();
+			});
+
 			function total() {
 				let sum = 0;
 
@@ -17,14 +25,6 @@
 
 				return sum;
 			}
-
-			// load all items from databse
-			$scope.data = itemsFactory.ref;
-
-			$scope.data.$loaded().then(() => {
-				// load sum to scope
-				$scope.total = total();
-			});
 
 			// show modal window for add new item
 			$scope.showModal = () => {
@@ -69,6 +69,8 @@
 
 			$scope.saveEdit = (item) => {
 				if (item) {
+					item.sum = parseFloat(item.sum);
+
 					$scope.data.$save(item).then(() => {
 						$scope.closeModal();
 						// recheck total sum
