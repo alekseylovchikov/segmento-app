@@ -6,7 +6,7 @@
     <title>Segmento</title>
     <link rel="stylesheet" href="css/main.css" />
   </head>
-  <body ng-app="segmentoApp" ng-controller="indexController">
+  <body ng-app="segmentoApp" ng-controller="indexController" ng-cloak>
     <header>
       <div id="main-header">
         <div id="logo">
@@ -29,8 +29,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in data | orderBy: 'id'">
-              <td><a href="#">{{ item.id }}</a></td>
+            <tr class="item" ng-repeat="item in data | orderBy: 'id'">
+              <td><a href="#" ng-click="editItem(item)">{{ item.id }}</a></td>
               <td>{{ item.sum | currency: "" }}</td>
               <td>{{ item.description }}</td>
             </tr>
@@ -38,11 +38,27 @@
         </table>
       </section>
 
-      <p id="add-btn"><button type="button" class="btn">Добавить</button></p>
+      <p id="add-btn"><button type="button" class="btn" ng-click="showModal()">Добавить</button></p>
+    </div>
+
+    <div id="modal" ng-show="show" class="animate-show">
+      <h1>Запись #1</h1>
+
+      <form id="form">
+        <input type="text" id="num" ng-model="item.sum" placeholder="Сумма" />
+        <textarea id="comment" ng-model="item.description" placeholder="Комментарий"></textarea>
+        <button type="submit" class="btn" ng-if="!editing" ng-click="saveNewItem(item)">Сохранить</button>
+        <button type="submit" class="btn" ng-if="editing" ng-click="saveEdit(item)">Редактировать</button>
+        <button type="button" class="btn-cancel" ng-click="closeModal()">Отменить</button>
+      </form>
     </div>
 
     <script src="node_modules/angular/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
     <script src="js/app.js"></script>
-    <script src="components/indexController.ctr.js"></script>
+    <script src="controllers/index-controller.ctr.js"></script>
+    <script src="factory/item.fac.js"></script>
+    <script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
   </body>
 </html>

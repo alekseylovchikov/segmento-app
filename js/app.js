@@ -1,4 +1,4 @@
 'use strict';
 
 angular
-	.module('segmentoApp', []);
+	.module('segmentoApp', ['ngAnimate', 'firebase']);
