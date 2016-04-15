@@ -27,7 +27,13 @@
 			}
 
 			// show modal window for add new item
-			$scope.showModal = function() {
+			$scope.showModal = function(editNumber) {
+				if (editNumber === undefined) {
+					$scope.numberOfItem = $scope.data.length + 1;
+				} else {
+					$scope.numberOfItem = editNumber;
+				}
+
 				$scope.show = true;
 			};
 
@@ -63,7 +69,7 @@
 			
 			$scope.editItem = function(item) {
 				$scope.editing = true;
-				$scope.showModal();
+				$scope.showModal(item.id);
 				$scope.item = $scope.data.$getRecord(item.$id);
 			};
 
