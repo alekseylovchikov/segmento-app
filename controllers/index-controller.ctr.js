@@ -1,9 +1,9 @@
-(() => {
+(function() {
 	'use strict';
 
 	angular
 		.module('segmentoApp')
-		.controller('indexController', ($scope, itemsFactory) => {
+		.controller('indexController', function($scope, itemsFactory) {
 			// init default sort
 			$scope.sortType = 'id';
 		  $scope.sortReverse = false;
@@ -11,7 +11,7 @@
 		  // load all items from databse
 			$scope.data = itemsFactory.ref;
 
-			$scope.data.$loaded().then(() => {
+			$scope.data.$loaded().then(function() {
 				// load sum to scope
 				$scope.total = total();
 			});
@@ -27,21 +27,21 @@
 			}
 
 			// show modal window for add new item
-			$scope.showModal = () => {
+			$scope.showModal = function() {
 				$scope.show = true;
 			};
 
 			// close modal
-			$scope.closeModal = () => {
+			$scope.closeModal = function() {
 				$scope.show = false;
-				setTimeout(() => {
+				setTimeout(function() {
 					$scope.item = {};
 					$scope.editing = false;
 				}, 300);
 			};
 
 			// save new item to scope data
-			$scope.saveNewItem = (item) => {
+			$scope.saveNewItem = function(item) {
 				if (item) {
 					let idItem = $scope.data.length + 1;
 					let newItem = {
@@ -52,7 +52,7 @@
 
 					$scope.data.$add(newItem);
 					// recheck total sum
-					$scope.data.$loaded().then(() => {
+					$scope.data.$loaded().then(function() {
 						// load sum to scope
 						$scope.total = total();
 					});
@@ -61,20 +61,20 @@
 				}
 			};
 			
-			$scope.editItem = (item) => {
+			$scope.editItem = function(item) {
 				$scope.editing = true;
 				$scope.showModal();
 				$scope.item = $scope.data.$getRecord(item.$id);
 			};
 
-			$scope.saveEdit = (item) => {
+			$scope.saveEdit = function(item) {
 				if (item) {
 					item.sum = parseFloat(item.sum);
 
-					$scope.data.$save(item).then(() => {
+					$scope.data.$save(item).then(function() {
 						$scope.closeModal();
 						// recheck total sum
-						$scope.data.$loaded().then(() => {
+						$scope.data.$loaded().then(function() {
 							// load sum to scope
 							$scope.total = total();
 						});

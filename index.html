@@ -41,16 +41,22 @@
       <p id="add-btn"><button type="button" class="btn" ng-click="showModal()">Добавить</button></p>
     </div>
 
-    <div id="modal" ng-show="show" class="animate-show">
-      <h1>Запись #1</h1>
+    <div class="lock" ng-if="show" class="animate-show">
+      <div class="shim">
+        <div id="modal">
+          <h1>Запись #1</h1>
 
-      <form id="form">
-        <input type="text" id="num" ng-model="item.sum" placeholder="Сумма" />
-        <textarea id="comment" ng-model="item.description" placeholder="Комментарий"></textarea>
-        <button type="submit" class="btn" ng-if="!editing" ng-click="saveNewItem(item)">Сохранить</button>
-        <button type="submit" class="btn" ng-if="editing" ng-click="saveEdit(item)">Редактировать</button>
-        <button type="button" class="btn-cancel" ng-click="closeModal()">Отменить</button>
-      </form>
+          <form id="form">
+            <input type="text" id="num" ng-model="item.sum" placeholder="Сумма" />
+            <textarea id="comment" ng-model="item.description" placeholder="Комментарий"></textarea>
+            <div class="btn-group">
+              <button type="submit" class="btn" ng-if="!editing" ng-click="saveNewItem(item)">Сохранить</button>
+              <button type="submit" class="btn" ng-if="editing" ng-click="saveEdit(item)">Редактировать</button>
+              <button type="button" class="btn-cancel" ng-click="closeModal()">Отменить</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script src="node_modules/angular/angular.js"></script>
