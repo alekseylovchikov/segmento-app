@@ -3,6 +3,10 @@
   src: url('../fonts/ParaType-FuturaFuturisRegular.otf');
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak { 
+  display: none; 
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -188,8 +192,13 @@ thead > tr > th:last-child {
 
 /* Modal window */
 
+.modal-container {
+  max-width: 487px;
+  margin: 0 auto;
+}
+
 #modal {
-  width: 487px;
+  width: 100%;
   height: 430px;
   border-top: 3px solid #ff2d00;
   background-color: #fff;
@@ -200,10 +209,6 @@ thead > tr > th:last-child {
 #modal {
   position: absolute;
   z-index: 9999;
-  top: 50%;
-  left: 50%;
-  margin-top: -215px;
-  margin-left: -243px;
 }
 
 #modal h1 {
@@ -218,6 +223,18 @@ thead > tr > th:last-child {
 
 #modal #form button {
   margin-top: 34px;
+}
+
+.error-validation {
+  position: absolute;
+  right: -140px;
+  color: #fff;
+  background-color: #ff2d00;
+  width: 166px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 14px;
+  margin-top: -48px;
 }
 
 .btn-group {
@@ -268,9 +285,19 @@ thead > tr > th:last-child {
   opacity: 1;
 }
 
+.error-validation {
+  opacity: 0.9;
+  transition: all 0.5s ease;
+}
+
+.error-validation.ng-hide {
+  right: 0;
+  opacity: 0;
+}
+
 /* For mobile device */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 512px) {
   header {
     height: 168px;
   }

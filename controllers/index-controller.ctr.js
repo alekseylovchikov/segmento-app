@@ -8,15 +8,7 @@
 			$scope.sortType = 'id';
 		  $scope.sortReverse = false;
 
-		  // load all items from databse
-			$scope.data = itemsFactory.ref;
-
-			$scope.data.$loaded().then(function() {
-				// load sum to scope
-				$scope.total = total();
-			});
-
-			function total() {
+		  function total() {
 				let sum = 0;
 
 				for (let i = 0; i < $scope.data.length; i++) {
@@ -25,6 +17,14 @@
 
 				return sum;
 			}
+
+		  // load all items from databse
+			$scope.data = itemsFactory.ref;
+
+			$scope.data.$loaded().then(function() {
+				// load total sum to scope
+				$scope.total = total();
+			});
 
 			// show modal window for add new item
 			$scope.showModal = function(editNumber) {
@@ -41,7 +41,7 @@
 			$scope.closeModal = function() {
 				$scope.show = false;
 				setTimeout(function() {
-					$scope.item = {};
+					$scope.item = null;
 					$scope.editing = false;
 				}, 300);
 			};
@@ -67,12 +67,14 @@
 				}
 			};
 			
+			// load data to form
 			$scope.editItem = function(item) {
 				$scope.editing = true;
 				$scope.showModal(item.id);
 				$scope.item = $scope.data.$getRecord(item.$id);
 			};
 
+			// saving edited data to database
 			$scope.saveEdit = function(item) {
 				if (item) {
 					item.sum = parseFloat(item.sum);
