@@ -4,12 +4,15 @@
 	angular
 		.module('segmentoApp')
 		.controller('indexController', ($scope, itemsFactory) => {
+			// init default sort
+			$scope.sortType = 'id';
+		  $scope.sortReverse = false;
 
 			function total() {
 				let sum = 0;
 
 				for (let i = 0; i < $scope.data.length; i++) {
-					sum += parseFloat($scope.data[i].sum);
+					sum += $scope.data[i].sum;
 				}
 
 				return sum;

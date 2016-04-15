@@ -23,13 +23,13 @@
         <table>
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Средства</th>
+              <th><a href="#/idsort" ng-click="sortType = 'id'; sortReverse = !sortReverse">Id</th>
+              <th><a href="#/sumsort" ng-click="sortType = 'sum'; sortReverse = !sortReverse">Средства</a></th>
               <th>Комментарий</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="item" ng-repeat="item in data | orderBy: 'id'">
+            <tr class="item" ng-repeat="item in data | orderBy:sortType:sortReverse">
               <td><a href="#" ng-click="editItem(item)">{{ item.id }}</a></td>
               <td>{{ item.sum | currency: "" }}</td>
               <td>{{ item.description }}</td>
