@@ -3,12 +3,12 @@
 
 	angular
 		.module('segmentoApp')
-		.factory('itemsFactory', function($firebaseArray) {
-			var ref = new Firebase('https://segmento.firebaseio.com/');
+		.factory('itemsFactory', ['$firebaseArray', function($firebaseArray) {
+            var ref = new Firebase('https://segmento.firebaseio.com/');
 
-			// return all items from database
-			return {
-				ref: $firebaseArray(ref)
-			};
-		});
+            // return all items from database
+            return {
+                ref: $firebaseArray(ref)
+            };
+		}]);
 })();
