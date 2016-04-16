@@ -17,40 +17,36 @@
         </div>
       </div>
     </header>
-
     <div class="container">
       <section id="table">
         <table>
           <thead>
-            <tr>
-              <th><a href="#/idsort" ng-click="sortType = 'id'; sortReverse = !sortReverse">Id</th>
-              <th><a href="#/sumsort" ng-click="sortType = 'sum'; sortReverse = !sortReverse">Средства</a></th>
-              <th>Комментарий</th>
-            </tr>
+          <tr>
+            <th><a href="#/idsort" ng-click="sortType = 'id'; sortReverse = !sortReverse">Id</a></th>
+            <th><a href="#/sumsort" ng-click="sortType = 'sum'; sortReverse = !sortReverse">Средства</a></th>
+            <th>Комментарий</th>
+          </tr>
           </thead>
           <tbody>
-            <tr class="item" ng-repeat="item in data | orderBy:sortType:sortReverse">
-              <td><a href="#" ng-click="editItem(item)">{{ item.id }}</a></td>
-              <td>{{ item.sum | currency: "" }}</td>
-              <td>{{ item.description }}</td>
-            </tr>
+          <tr class="item" ng-repeat="item in data | orderBy:sortType:sortReverse">
+            <td><a href="#" ng-click="editItem(item)">{{ item.id }}</a></td>
+            <td>{{ item.sum | currency: "" }}</td>
+            <td>{{ item.description }}</td>
+          </tr>
           </tbody>
         </table>
       </section>
-
       <p id="add-btn"><button type="button" class="btn" ng-click="showModal()">Добавить</button></p>
     </div>
-
-    <div class="lock" ng-if="show" class="animate-show">
+    <div class="lock animate-show" ng-if="show">
       <div class="shim">
         <div class="modal-container">
           <div id="modal">
             <h1>Запись #{{ numberOfItem }}</h1>
-
-            <form id="form" name="form" novalidate>
+            <form id="form" name="form">
               <input type="number" id="sum" name="sum" ng-model="item.sum" min="-1000" max="1000" ng-required="true" placeholder="Сумма" />
-              <span ng-show="fform.sum.$error.min || form.sum.$error.max" class="error-validation">Неверное значение</span>
-              <textarea id="comment" ng-model="item.description" name="comment" ng-required="true" placeholder="Комментарий"></textarea>
+              <span ng-show="form.sum.$error.min || form.sum.$error.max" class="error-validation">Неверное значение</span>
+              <textarea id="comment" ng-model="item.description" name="comment" ng-required="true" ng-maxlength="512" placeholder="Комментарий"></textarea>
               <div class="btn-group">
                 <button type="submit" class="btn" ng-if="!editing" ng-click="saveNewItem(item)">Сохранить</button>
                 <button type="submit" class="btn" ng-if="editing" ng-click="saveEdit(item)">Редактировать</button>
@@ -61,7 +57,6 @@
         </div>
       </div>
     </div>
-
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
     <script src="js/app.js"></script>

@@ -6,19 +6,19 @@
 		.controller('indexController', function($scope, itemsFactory) {
 			// init default sort
 			$scope.sortType = 'id';
-		  $scope.sortReverse = false;
+			$scope.sortReverse = false;
 
-		  function total() {
-				let sum = 0;
+			function total() {
+				var sum = 0;
 
-				for (let i = 0; i < $scope.data.length; i++) {
+				for (var i = 0; i < $scope.data.length; i++) {
 					sum += $scope.data[i].sum;
 				}
 
 				return sum;
 			}
 
-		  // load all items from databse
+			// load all items from databse
 			$scope.data = itemsFactory.ref;
 
 			$scope.data.$loaded().then(function() {
@@ -49,8 +49,8 @@
 			// save new item to scope data
 			$scope.saveNewItem = function(item) {
 				if (item) {
-					let idItem = $scope.data.length + 1;
-					let newItem = {
+					var idItem = $scope.data.length + 1;
+					var newItem = {
 						id: idItem,
 						sum: parseFloat(item.sum),
 						description: item.description
@@ -66,7 +66,7 @@
 					$scope.closeModal();
 				}
 			};
-			
+
 			// load data to form
 			$scope.editItem = function(item) {
 				$scope.editing = true;
