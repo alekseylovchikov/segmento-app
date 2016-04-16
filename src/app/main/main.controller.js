@@ -8,6 +8,7 @@
 			$scope.sortType = 'id';
 			$scope.sortReverse = false;
 
+			// total sum
 			function total() {
 				var sum = 0;
 
@@ -48,12 +49,12 @@
 
 			// save new item to scope data
 			$scope.saveNewItem = function(item) {
-				if (item) {
+				if (item && item.sum >= -1000 && item.sum <= 1000) {
 					var idItem = $scope.data.length + 1;
 					var newItem = {
 						id: idItem,
 						sum: parseFloat(item.sum),
-						description: item.description
+						description: item.description || ''
 					};
 
 					$scope.data.$add(newItem);

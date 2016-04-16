@@ -10,10 +10,12 @@
 .x-ng-cloak {
     display: none;
 }
+* {
+    font-family: 'FuturaFuturisRegular';
+}
 body {
     margin: 0;
     padding: 0;
-    font-family: 'FuturaFuturisRegular';
     font-weight: 300;
     background-color: #f1f1f1;
     color: #4f4f4f;
@@ -27,7 +29,6 @@ a {
 }
 input,
 textarea {
-    font-family: 'FuturaFuturisRegular';
     margin-top: 15px;
     width: 100%;
     height: 44px;
@@ -37,6 +38,7 @@ textarea {
     background-image: none;
     border: 1px solid #d9d9d9;
     border-radius: 4px;
+    outline: none;
 }
 input {
     color: #000;
@@ -44,9 +46,10 @@ input {
 textarea {
     height: 130px;
     color: #626262;
+    padding-top: 15px;
 }
-/* Header */
 
+/* Header */
 header {
     height: 107px;
     width: 100%;
@@ -83,8 +86,8 @@ header {
     text-align: center;
     line-height: 80px;
 }
-/* Content */
 
+/* Content */
 table {
     background-color: #fff;
     border: 1px solid #c0c1c2;
@@ -125,8 +128,10 @@ thead > tr > th:first-child {
 thead > tr > th:last-child {
     border-left: 1px solid #eef2f5;
 }
+.fa-caret-down, .fa-caret-up {
+    color: #ff2d00;
+}
 .btn {
-    font-family: 'FuturaFuturisRegular';
     font-weight: bold;
     cursor: pointer;
     width: 140px;
@@ -148,7 +153,6 @@ thead > tr > th:last-child {
     margin-top: 0;
 }
 .btn-cancel {
-    font-family: 'FuturaFuturisRegular';
     font-weight: bold;
     float: right;
     cursor: pointer;
@@ -169,8 +173,8 @@ thead > tr > th:last-child {
     border: 1px solid #ff2d00;
     color: #fff;
 }
-/* Modal window */
 
+/* Modal window */
 .modal-container {
     max-width: 487px;
     margin: 0 auto;
@@ -234,18 +238,9 @@ thead > tr > th:last-child {
 
     zoom: 1;
 }
+
 /* Animate */
 
-.animate-show {
-    opacity: 1;
-}
-.animate-show.ng-hide-add,
-.animate-show.ng-hide-remove {
-    transition: all 0.5s ease;
-}
-.animate-show.ng-hide {
-    opacity: 0;
-}
 .item.ng-enter,
 .item.ng-move {
     transition: all 0.3s ease;
@@ -256,14 +251,26 @@ thead > tr > th:last-child {
     opacity: 1;
 }
 .error-validation {
-    opacity: 0.9;
-    transition: all 0.5s ease;
+    opacity: 1;
+    transition: all 0.3s ease;
 }
 .error-validation.ng-hide {
     right: 0;
     opacity: 0;
 }
+.textarea {
+    bottom: 132px;
+}
+
 /* For mobile device */
+@media screen and (max-width: 790px) {
+    .error-validation {
+        display: none;
+    }
+    .ng-invalid.ng-touched {
+        border: 1px solid #ff2d00;
+    }
+}
 
 @media screen and (max-width: 512px) {
     header {
