@@ -40,14 +40,14 @@
         <table>
             <thead>
             <tr>
-                <th>Id <a href="#/idsort" ng-click="sortType = 'id'; sortReverse = !sortReverse"><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></a></th>
-                <th>Средства <a href="#/sumsort" ng-click="sortType = 'sum'; sortReverse = !sortReverse"><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></a></th>
+                <th>Id <a href="#/#id" ng-click="sort = 'id'; sortReverse = !sortReverse"><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></a></th>
+                <th>Средства <a href="#/#sum" ng-click="sort = 'sum'; sortReverse = !sortReverse"><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></a></th>
                 <th>Комментарий</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="item" ng-repeat="item in data | orderBy:sortType:sortReverse">
-                <td><a href="#/" ng-click="editItem(item)">{{ item.id }}</a></td>
+            <tr class="item" ng-repeat="item in data | orderBy:sort:sortReverse">
+                <td><a href="#" ng-click="editItem(item)">{{ item.id }}</a></td>
                 <td>{{ item.sum | currency: "" }}</td>
                 <td>{{ item.description }}</td>
             </tr>
@@ -76,9 +76,10 @@
         </div>
     </div>
 </div>
-<script src="node_modules/angular/angular.min.js"></script>
-<script src="node_modules/angular-animate/angular-animate.min.js"></script>
-<script src="node_modules/angular-route/angular-route.min.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-animate/angular-animate.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="src/app/app.js"></script>
 <script src="src/app/main/main.controller.js"></script>
 <script src="src/app/components/items/items.factory.js"></script>

@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'FuturaFuturisRegular';
+    font-family: 'Futura';
     src: url('../fonts/ParaType-FuturaFuturisRegular.otf');
 }
 [ng\:cloak],
@@ -11,7 +11,7 @@
     display: none;
 }
 * {
-    font-family: 'FuturaFuturisRegular';
+    font-family: 'Futura';
 }
 body {
     margin: 0;
@@ -238,6 +238,9 @@ textarea {
 }
 .shim > * {
     -webkit-transform: translateZ(0px);
+    -moz-transform: translateZ(0px);
+    -o-transform: translateZ(0px);
+    transform: translateZ(0px);
 }
 .shim {
     background: rgba(0, 0, 0, 0.5);
@@ -248,10 +251,12 @@ textarea {
 }
 
 /* Animate */
-
 .item.ng-enter,
 .item.ng-move {
-    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
     opacity: 0;
 }
 .item.ng-enter.ng-enter-active,
@@ -259,8 +264,11 @@ textarea {
     opacity: 1;
 }
 .error-validation {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
     opacity: 1;
-    transition: all 0.3s ease;
 }
 .error-validation.ng-hide {
     right: 0;

@@ -3,10 +3,16 @@
 
 	angular
 		.module('segmentoApp')
-		.controller('MainController', ['$scope', 'itemsFactory', function($scope, itemsFactory) {
-            // init default sort
-            $scope.sortType = 'id';
+		.controller('MainController', ['$scope', '$location', 'itemsFactory', function($scope, $location, itemsFactory) {
+
             $scope.sortReverse = false;
+
+            // init sort state
+            if ($location.hash()) {
+                $scope.sort = $location.hash();
+            } else {
+                $scope.sort = 'id';
+            }
 
             // total sum
             function total() {
@@ -19,7 +25,7 @@
                 return sum;
             }
 
-            // load all items from databse
+            // load all items from database to scope
             $scope.data = itemsFactory.ref;
 
             $scope.data.$loaded().then(function() {
