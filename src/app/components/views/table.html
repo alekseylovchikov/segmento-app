@@ -14,15 +14,13 @@
             <thead>
             <tr>
                 <th>Id
-                    <a href="#" ui-sref="list({ sort: 'id' })" ng-click="list.sortChanged(sortReverse)">
-                        <i ng-if="sortReverse" class="fa fa-caret-up" aria-hidden="true"></i>
-                        <i ng-if="!sortReverse" class="fa fa-caret-down" aria-hidden="true"></i>
+                    <a href="#" ui-sref="list({ sort: 'id', type: sortReverse ? 'asc' : 'desc' })" ng-click="list.sortChanged(sortReverse)">
+                        <i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i>
                     </a>
                 </th>
                 <th>Средства
-                    <a href="#" ui-sref="list({ sort: 'sum' })" ng-click="list.sortChanged(sortReverse)">
-                        <i ng-if="sortReverse" class="fa fa-caret-up" aria-hidden="true"></i>
-                        <i ng-if="!sortReverse" class="fa fa-caret-down" aria-hidden="true"></i>
+                    <a href="#" ui-sref="list({ sort: 'sum', type: sortReverse ? 'asc' : 'desc' })" ng-click="list.sortChanged(sortReverse)">
+                        <i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i>
                     </a>
                 </th>
                 <th>Комментарий</th>

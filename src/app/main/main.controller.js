@@ -14,7 +14,7 @@
             self.sortChanged = function(sortReverse) {
                 $state.go('.', {
                     sort: self.sort,
-					type: (sortReverse && true) ? 'asc' : 'desc'
+					type: self.type
                 });
             };
 
