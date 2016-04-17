@@ -1,0 +1,65 @@
+<header>
+    <div id="main-header">
+        <div id="logo">
+            <img src="assets/img/logo.png" alt="Segmento" />
+        </div>
+        <div id="counter">
+            <div id="total">{{ total | currency: "" }}</div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <section id="table">
+        <table>
+            <thead>
+            <tr>
+                <th>Id
+                    <a href="#" ui-sref="list({ sort: 'id' })" ng-click="list.sortChanged(sortReverse)">
+                        <i ng-if="sortReverse" class="fa fa-caret-up" aria-hidden="true"></i>
+                        <i ng-if="!sortReverse" class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th>Средства
+                    <a href="#" ui-sref="list({ sort: 'sum' })" ng-click="list.sortChanged(sortReverse)">
+                        <i ng-if="sortReverse" class="fa fa-caret-up" aria-hidden="true"></i>
+                        <i ng-if="!sortReverse" class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                </th>
+                <th>Комментарий</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="item" ng-repeat="item in data | orderBy:list.sort:sortReverse">
+                <td><a href="" ng-click="list.editItem(item)">{{ item.id }}</a></td>
+                <td>{{ item.sum | currency: "" }}</td>
+                <td>{{ item.description }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <p id="add-btn"><button type="button" class="btn" ng-click="showModal()">Добавить</button></p>
+</div>
+
+<!-- <button class="btn" ng-click="list.nextPage()">Next</button>
+<button class="btn" ng-click="list.prevPage()">Prev</button> -->
+
+<div class="lock animate-show" ng-if="show">
+    <div class="shim">
+        <div class="modal-container">
+            <div id="modal" class="animate-modal-window">
+                <h1>Запись #{{ numberOfItem }}</h1>
+                <form id="form" name="form">
+                    <input type="number" id="sum" name="sum" ng-model="item.sum" min="-1000" max="1000" ng-required="true" placeholder="Сумма" />
+                    <span ng-show="form.sum.$error.min || form.sum.$error.max" class="error-validation">Неверное значение</span>
+                    <textarea id="comment" ng-model="item.description" name="comment" ng-maxlength="512" placeholder="Комментарий"></textarea>
+                    <span ng-show="form.comment.$invalid && form.comment.$touched" class="error-validation textarea">Неверное значение</span>
+                    <div class="btn-group">
+                        <button type="submit" class="btn" ng-if="!editing" ng-click="saveNewItem(item)">Сохранить</button>
+                        <button type="submit" class="btn" ng-if="editing" ng-click="saveEdit(item)">Редактировать</button>
+                        <button type="button" class="btn-cancel" ng-click="closeModal()">Отменить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

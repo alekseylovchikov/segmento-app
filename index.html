@@ -1,89 +1,41 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Segmento</title>
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/icons/apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/icons/apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/icons/apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/icons/apple-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/icons/apple-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/icons/apple-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/apple-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192"  href="assets/img/icons/android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/icons/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16x16.png" />
-    <link rel="manifest" href="assets/img/icons/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="assets/img/icons/ms-icon-144x144.png" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-</head>
-<body ng-app="segmentoApp" ng-controller="MainController" ng-cloak>
-<header>
-    <div id="main-header">
-        <div id="logo">
-            <img src="assets/img/logo.png" alt="Segmento" />
-        </div>
-        <div id="counter">
-            <div id="total">{{ total | currency: "" }}</div>
-        </div>
-    </div>
-</header>
-<div class="container">
-    <section id="table">
-        <table>
-            <thead>
-            <tr>
-                <th>Id <a href="#/#id" ng-click="sort = 'id'; sortReverse = !sortReverse"><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></a></th>
-                <th>Средства <a href="#/#sum" ng-click="sort = 'sum'; sortReverse = !sortReverse"><i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i></a></th>
-                <th>Комментарий</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="item" ng-repeat="item in data | orderBy:sort:sortReverse">
-                <td><a href="#" ng-click="editItem(item)">{{ item.id }}</a></td>
-                <td>{{ item.sum | currency: "" }}</td>
-                <td>{{ item.description }}</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
-    <p id="add-btn"><button type="button" class="btn" ng-click="showModal()">Добавить</button></p>
-</div>
-<div class="lock animate-show" ng-if="show">
-    <div class="shim">
-        <div class="modal-container">
-            <div id="modal" class="animate-modal-window">
-                <h1>Запись #{{ numberOfItem }}</h1>
-                <form id="form" name="form">
-                    <input type="number" id="sum" name="sum" ng-model="item.sum" min="-1000" max="1000" ng-required="true" placeholder="Сумма" />
-                    <span ng-show="form.sum.$error.min || form.sum.$error.max" class="error-validation">Неверное значение</span>
-                    <textarea id="comment" ng-model="item.description" name="comment" ng-maxlength="512" placeholder="Комментарий"></textarea>
-                    <span ng-show="form.comment.$invalid && form.comment.$touched" class="error-validation textarea">Неверное значение</span>
-                    <div class="btn-group">
-                        <button type="submit" class="btn" ng-if="!editing" ng-click="saveNewItem(item)">Сохранить</button>
-                        <button type="submit" class="btn" ng-if="editing" ng-click="saveEdit(item)">Редактировать</button>
-                        <button type="button" class="btn-cancel" ng-click="closeModal()">Отменить</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="node_modules/angular/angular.js"></script>
-<script src="node_modules/angular-animate/angular-animate.js"></script>
-<script src="node_modules/angular-route/angular-route.js"></script>
-<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="src/app/app.js"></script>
-<script src="src/app/main/main.controller.js"></script>
-<script src="src/app/components/items/items.factory.js"></script>
-<script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-<script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Segmento</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="assets/img/icons/apple-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="assets/img/icons/apple-icon-60x60.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/icons/apple-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="assets/img/icons/apple-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/icons/apple-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="assets/img/icons/apple-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/apple-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-icon-180x180.png" />
+        <link rel="icon" type="image/png" sizes="192x192"  href="assets/img/icons/android-icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="assets/img/icons/favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16x16.png" />
+        <link rel="manifest" href="assets/img/icons/manifest.json" />
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="assets/img/icons/ms-icon-144x144.png" />
+        <meta name="theme-color" content="#ffffff" />
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body ng-app="segmentoApp" ng-controller="MainController" ng-cloak>
+
+        <ui-view></ui-view>
+
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-animate/angular-animate.js"></script>
+        <script src="node_modules/angular-route/angular-route.js"></script>
+        <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="src/app/app.js"></script>
+        <script src="src/app/main/main.controller.js"></script>
+        <script src="src/app/components/items/items.factory.js"></script>
+        <script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+        <script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+    </body>
 </html>

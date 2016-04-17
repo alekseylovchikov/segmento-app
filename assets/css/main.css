@@ -176,6 +176,12 @@ textarea {
     border-radius: 4px;
     outline: none;
 }
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
 input {
     color: #000;
     height: 44px;

@@ -3,16 +3,20 @@
 
 	angular
 		.module('segmentoApp')
-		.controller('MainController', ['$scope', '$location', 'itemsFactory', function($scope, $location, itemsFactory) {
+		.controller('MainController', ['$scope', '$stateParams', '$state', 'itemsFactory', function($scope, $stateParams, $state, itemsFactory) {
+            var self = this;
 
-            $scope.sortReverse = false;
+            self.sort = $stateParams.sort;
+			self.type = $stateParams.type;
 
-            // init sort state
-            if ($location.hash()) {
-                $scope.sort = $location.hash();
-            } else {
-                $scope.sort = 'id';
-            }
+			$scope.sortReverse = $stateParams.type === 'asc' ? false : true;
+
+            self.sortChanged = function(sortReverse) {
+                $state.go('.', {
+                    sort: self.sort,
+					type: (sortReverse && true) ? 'asc' : 'desc'
+                });
+            };
 
             // total sum
             function total() {
@@ -75,7 +79,7 @@
             };
 
             // load data to form
-            $scope.editItem = function(item) {
+            self.editItem = function(item) {
                 $scope.editing = true;
                 $scope.showModal(item.id);
                 $scope.item = $scope.data.$getRecord(item.$id);
