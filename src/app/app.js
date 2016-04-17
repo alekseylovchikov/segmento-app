@@ -21,7 +21,7 @@ angular
                         squash: true
                     },
 					type: {
-						value: '',
+						value: 'asc',
 						squash: true
 					}
                 }
