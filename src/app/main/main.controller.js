@@ -3,7 +3,7 @@
 
 	angular
 		.module('segmentoApp')
-		.controller('indexController', ['$scope', 'itemsFactory', function($scope, itemsFactory) {
+		.controller('MainController', ['$scope', 'itemsFactory', function($scope, itemsFactory) {
             // init default sort
             $scope.sortType = 'id';
             $scope.sortReverse = false;
