@@ -1,16 +1,10 @@
 @font-face {
     font-family: "Futura";
-    src: url("../fonts/ParaType-FuturaFuturisRegular.otf");
-    src: local("☺"),
-    url("_font/LucidaFax-bold.woff") format("woff"),
-    url("_font/LucidaFax-bold.ttf") format("truetype"),
-    url("_font/LucidaFax-bold.svg#LucidaFax-bold") format("svg");
+    src: url("../fonts/FuturaRegular/FuturaRegular.eot?#iefix") format("embedded-opentype");
+    src:
+        url("../fonts/ParaType-FuturaFuturisRegular.otf"),
+        url("../fonts/FuturaRegular/FuturaRegular.eot");
 }
-
-/*@font-face {
-    font-family: 'Futura';
-    src: url('../fonts/ParaType-FuturaFuturisRegular.otf');
-}*/
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -248,7 +242,6 @@ textarea {
 #modal #form button {
     margin-top: 34px;
 }
-
 .error-validation {
     position: absolute;
     right: -140px;
@@ -259,6 +252,19 @@ textarea {
     border-radius: 4px;
     padding: 14px;
     margin-top: -48px;
+}
+.error-validation:after {
+    right: 99%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-right-color: #ff2d00;
+	border-width: 10px;
+	margin-top: -10px;
 }
 .btn-group {
     width: 344px;
