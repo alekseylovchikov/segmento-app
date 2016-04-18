@@ -13,15 +13,25 @@
         <table>
             <thead>
             <tr>
-                <th>Id
-                    <a href="#" ui-sref="list({ sort: 'id', type: sortReverse ? 'asc' : 'desc' })" ng-click="list.sortChanged(sortReverse)">
-                        <i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i>
-                    </a>
+                <th>
+                    <div class="th-container">
+                        <span class="th-text">Id</span>
+                        <div class="caret">
+                            <a href="#" ui-sref="list({ sort: 'id', type: sortReverse ? 'asc' : 'desc' })" ng-click="list.sortChanged(sortReverse)">
+                                <i ng-if="sortReverse || list.sort === 'sum' || (!sortReverse && list.sort === '')" class="fa fa-caret-up" aria-hidden="true"></i><i ng-if="!sortReverse || list.sort === 'sum'" class="fa fa-caret-down" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
                 </th>
-                <th>Средства
-                    <a href="#" ui-sref="list({ sort: 'sum', type: sortReverse ? 'asc' : 'desc' })" ng-click="list.sortChanged(sortReverse)">
-                        <i class="fa fa-caret-up" aria-hidden="true"></i><i class="fa fa-caret-down" aria-hidden="true"></i>
-                    </a>
+                <th>
+                    <div class="th-container">
+                        <span class="th-text">Средства</span>
+                        <div class="caret">
+                            <a href="#" ui-sref="list({ sort: 'sum', type: sortReverse ? 'asc' : 'desc' })" ng-click="list.sortChanged(sortReverse)">
+                                <i ng-if="sortReverse || list.sort === 'id' || (!sortReverse && list.sort === '')" class="fa fa-caret-up" aria-hidden="true"></i><i ng-if="!sortReverse ||  list.sort === 'id'" class="fa fa-caret-down" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
                 </th>
                 <th>Комментарий</th>
             </tr>

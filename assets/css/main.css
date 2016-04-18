@@ -1,7 +1,16 @@
 @font-face {
+    font-family: "Futura";
+    src: url("../fonts/ParaType-FuturaFuturisRegular.otf");
+    src: local("☺"),
+    url("_font/LucidaFax-bold.woff") format("woff"),
+    url("_font/LucidaFax-bold.ttf") format("truetype"),
+    url("_font/LucidaFax-bold.svg#LucidaFax-bold") format("svg");
+}
+
+/*@font-face {
     font-family: 'Futura';
     src: url('../fonts/ParaType-FuturaFuturisRegular.otf');
-}
+}*/
 [ng\:cloak],
 [ng-cloak],
 [data-ng-cloak],
@@ -84,10 +93,10 @@ table tr td:last-child {
 table tr th {
     border-bottom: 3px solid #4f4f4f;
     color: #000;
-}
-tr > th {
     padding: 22px;
     text-align: left;
+
+    line-height: 20px;
 }
 tr > td {
     padding: 22px;
@@ -107,8 +116,32 @@ thead > tr > th:first-child {
 thead > tr > th:last-child {
     border-left: 1px solid #eef2f5;
 }
+.th-container {
+    display: inline-block;
+}
+.th-text {
+    float: left;
+}
+.caret {
+    float: right;
+}
+.caret a {
+    text-decoration: none;
+}
 .fa-caret-down, .fa-caret-up {
+    height: 8px;
     color: #ff2d00;
+    padding-left: 10px;
+}
+.fa-caret-up {
+    float: inherit;
+    display: block;
+    width: 16px;
+}
+.fa-caret-down {
+    float: inherit;
+    display: block;
+    width: 16px;
 }
 .btn {
     font-weight: bold;

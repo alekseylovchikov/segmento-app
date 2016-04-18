@@ -87,7 +87,7 @@
 
             // saving edited data to database
             $scope.saveEdit = function(item) {
-                if (item) {
+                if (item && item.sum >= -1000 && item.sum <= 1000) {
                     item.sum = parseFloat(item.sum);
 
                     $scope.data.$save(item).then(function() {
